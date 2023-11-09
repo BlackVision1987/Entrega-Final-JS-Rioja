@@ -1,0 +1,96 @@
+[
+    {
+        "id": 1,
+        "name": "Tarjeta Gráfica NVidia RTX 4080",
+        "price": 1200,
+        "image": "images/graphics_nvidia_4080.jpg",
+        "category": "Gráfica NVidia"
+    },
+    {
+        "id": 2,
+        "name": "Procesador Intel i7 12700K",
+        "price": 500,
+        "image": "images/processor_i7.jpg",
+        "category": "Procesadores Intel"
+    },
+    {
+        "id": 3,
+        "name": "Mother Gigabyte X570 GAMING X",
+        "price": 300,
+        "image": "images/mother_amd.jpg",
+        "category": "Mother AMD"
+
+    },
+    {
+        "id": 4,
+        "name": "Mother MSI MEG Z690 ACE",
+        "price": 350,
+        "image": "images/mother_intel.jpg",
+        "category": "Mother Intel"
+
+    },
+    {
+        "id": 5,
+        "name": "Disco SSD NVMe M.2 SAMSUNG 980 PRO 250GB PCIE 4.0",
+        "price": 150,
+        "image": "images/ssd_nvme.jpg",
+        "category": "Almacenamiento SSD"
+
+    },
+    {
+        "id": 6,
+        "name": "Disco Duro HDD 1Tb Seagate Barracuda Sata III",
+        "price": 170,
+        "image": "images/hd_sata.jpg",
+        "category": "Almacenamiento Rigido"
+
+    },
+    {
+        "id": 7,
+        "name": "Procesador AMD Ryzen 7 5800X",
+        "price": 400,
+        "image": "images/processor_r7.jpg",
+        "category": "Procesadores AMD"
+
+    },
+    {
+        "id": 8,
+        "name": "Tarjeta Gráfica AMD RADEON RX 7800 XT",
+        "price": 1000,
+        "image": "images/grafica_amd_7800.jpg",
+        "category": "Gráfica AMD"
+
+    },
+    {
+        "id": 9,
+        "name": "Fuente Seasonic Focus Gx-850w 80plus Gold",
+        "price": 300,
+        "image": "images/fuente_850w.jpg",
+        "category": "Fuentes"
+
+    },
+    {
+        "id": 10,
+        "name": "GABINETE CORSAIR ICUE 7000X RGB TG FULL-TOWER ATX WHITE",
+        "price": 200,
+        "image": "images/gabinete_rgb.jpg",
+        "category": "Gabinetes"
+
+    },
+    {
+        "id": 11,
+        "name": "Memoria Ram Ddr4 16gb 3200mhz (8GBx2) Corsair Vengeance Rgb Pro Black",
+        "price": 150,
+        "image": "images/ram_ddr4.jpg",
+        "category": "Memoria DDR4"
+
+    },
+    {
+        "id": 12,
+        "name": "Memoria RAM DDR5 Corsair 16GB 5600MHz (8GBx2) Vengeance RGB AMD EXPO",
+        "price": 190,
+        "image": "images/ram_ddr5.jpg",
+        "category": "Memoria DDR5"
+
+    }
+]

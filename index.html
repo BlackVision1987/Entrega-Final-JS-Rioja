@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tienda de Hardware de PC</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <header>
+        <h1>Tienda de Hardware de PC Dr. Robot</h1>
+        <div id="cart-icon">
+            <img src="images/cart-icon.png" alt="Carrito">
+        </div>                   
+    </header>
+    <select id="category-filter">
+        <option value="all">Todas las Categorías</option>
+        <option value="Gráfica NVidia">Gráfica NVidia</option>
+        <option value="Gráfica AMD">Gráfica AMD</option>
+        <option value="Mother Intel">Mother Intel</option>
+        <option value="Mother AMD">Mother AMD</option>
+        <option value="Procesadores Intel">Procesadores Intel</option>
+        <option value="Procesadores AMD">Procesadores AMD</option>
+        <option value="Almacenamiento SSD">Almacenamiento SSD</option>
+        <option value="Almacenamiento Rigido">Almacenamiento Rigido</option>
+        <option value="Memoria DDR4">Memoria DDR4</option>
+        <option value="Memoria DDR5">Memoria DDR5</option>
+        <option value="Fuentes">Fuentes</option>
+        <option value="Gabinetes">Gabinetes</option>        
+    </select>
+    <input type="text" id="search-input" placeholder="Buscar productos">
+    <button id="search-button">Buscar</button>
+    <button id="reset-button">Restablecer</button>            
+    <section class="products">
+        <h2>Productos</h2>
+        <div id="product-list"></div>        
+    </section>        
+    <section class="cart">
+        <h2>Carrito de Compras</h2>
+        <div id="cart"></div>
+        <p>Total: $<span id="total-price">0.00</span></p>
+        <button id="clear-cart">Vaciar Carrito</button>
+        <button id="checkout">Comprar</button>
+    </section>
+    <script src="app.js"></script>    
+</body>
+</html>
