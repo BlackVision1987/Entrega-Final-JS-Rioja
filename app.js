@@ -155,24 +155,28 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para agregar productos al carrito
     function addToCart(productId, quantityElement) {
         const product = getProductById(productId);
-
-        if (product) {
-            let cartItem = cartItems.find((item) => item.id === productId);
-            if (!cartItem) {
-                cartItem = { ...product, quantity: 0 };
-                cartItems.push(cartItem);
-            }
-
-            cartItem.quantity++;
-
-            if (quantityElement) {
-                quantityElement.textContent = cartItem.quantity;
-            }
-
-            showCartAlert("Producto agregado al carrito");
-            updateCart();
-            updateCartCount(); // Añade esta línea para actualizar el contador del carrito
+    
+        if (!product) {
+            console.error(`Producto con ID ${productId} no encontrado.`);
+            return;
         }
+    
+        let cartItem = cartItems.find((item) => item.id === productId);
+    
+        if (!cartItem) {
+            cartItem = { ...product, quantity: 0 };
+            cartItems.push(cartItem);
+        }
+    
+        cartItem.quantity++;
+    
+        if (quantityElement) {
+            quantityElement.textContent = cartItem.quantity;
+        }
+    
+        showCartAlert("Producto agregado al carrito");
+        updateCart();
+        updateCartCount();
     }
 
     // Función para obtener un producto por su ID
@@ -184,31 +188,37 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateCart() {
         cart.innerHTML = "";
         let total = 0;
-
+    
         cartItems.forEach((item) => {
             total += item.price * item.quantity;
             const cartItem = document.createElement("div");
             cartItem.className = "cart-item";
-
+    
             cartItem.innerHTML = `
                 <img src="${item.image}" alt="${item.name}">
                 <h3>${item.name}</h3>
                 <p>$${item.price.toFixed(2)} x ${item.quantity} = $${(item.price * item.quantity).toFixed(2)}</p>
                 <button class="remove-from-cart" data-id="${item.id}">Eliminar</button>
             `;
-
+    
             cart.appendChild(cartItem);
         });
-
+    
         totalPrice.textContent = total.toFixed(2);
+        updateCartCount();
+        addRemoveFromCartListeners(); // Agrega el evento para eliminar productos del carrito
+    }
+    
+    function updateCartCount() {
+        const totalCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+        cartCount.textContent = totalCount.toString();
+    }
 
-        // Agregar evento para eliminar productos del carrito
+    function addRemoveFromCartListeners() {
         const removeButtons = document.querySelectorAll(".remove-from-cart");
         removeButtons.forEach((button) => {
             button.addEventListener("click", removeFromCart);
         });
-
-        updateCartCount(); // Añade esta línea para actualizar el contador del carrito
     }
 
     // Función para eliminar productos del carrito
@@ -251,11 +261,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Función para mostrar alerta de carrito con SweetAlert
-    function showCartAlert(message) {
+    function showCartAlert(message, icon = "success") {
         Swal.fire({
             title: "Carrito de Compras",
             text: message,
-            icon: "success",
+            icon: icon,
             showConfirmButton: false,
             timer: 1000 // 1 segundo
         });
