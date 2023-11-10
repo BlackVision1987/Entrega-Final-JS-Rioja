@@ -132,3 +132,58 @@ button:hover {
         width: 100%;
     }
 }
+/* Añadir estilos para el ícono del carrito */
+#cart-icon {
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Estilo para el título del carrito */
+.cart h2 {
+    color: #333;
+}
+
+/* Estilo para las opciones de filtro */
+#category-filter {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+#category-filter option {
+    font-size: 16px;
+    padding: 5px;
+}
+
+#category-filter option:checked {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Estilo para los botones */
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+#clear-cart {
+    background-color: #ff3333;
+}
+
+#clear-cart:hover {
+    background-color: #ff5050;
+}

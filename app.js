@@ -10,27 +10,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const categoryFilter = document.getElementById("category-filter");
     const searchInput = document.getElementById("search-input");
     const searchButton = document.getElementById("search-button");
-    
+
     const cartIcon = document.getElementById("cart-icon");
     cartIcon.addEventListener("click", showCartSummary);
 
     function showCartSummary() {
         if (cartItems.length === 0) {
-            Swal.fire({
-                title: "Carrito de Compras",
-                text: "El carrito está vacío.",
-                icon: "info",
-                confirmButtonText: "Aceptar"
-            });
+            showCartAlert("El carrito está vacío.");
         } else {
             let summary = "Carrito de Compras:<br>";
-    
+
             cartItems.forEach((item) => {
                 summary += `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}<br>`;
             });
-    
+
             summary += `<br>Total: $${calculateTotal()}`;
-    
+
             Swal.fire({
                 title: "Resumen del Carrito",
                 html: summary,
@@ -48,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return total.toFixed(2);
     }
 
-
     // Agrega un evento para restablecer la lista de productos
     const resetButton = document.getElementById("reset-button");
     resetButton.addEventListener("click", () => {
@@ -60,15 +54,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function performSearch() {
         const query = searchInput.value.toLowerCase(); // Obtén la consulta y conviértela a minúsculas
-    
+
         // Filtra los productos que coinciden con la consulta
         const searchResults = productData.filter((product) => product.name.toLowerCase().includes(query));
-    
+
         // Muestra los resultados en la página
         displayProducts(searchResults);
     }
 
-    
     categoryFilter.addEventListener("change", function () {
         const selectedCategory = categoryFilter.value;
         const filteredProducts = selectedCategory === "all" ? productData : filterProductsByCategory(productData, selectedCategory);
@@ -117,6 +110,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 quantityElement.textContent = cartItem.quantity;
             }
             updateCart();
+            showCartAlert("Cantidad incrementada");
+        } else {
+            // Si el carrito está vacío, agrega automáticamente un artículo al carrito
+            addToCart(productId, quantityElement);
         }
     }
 
@@ -129,9 +126,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 quantityElement.textContent = cartItem.quantity;
             }
             updateCart();
+            showCartAlert("Cantidad disminuida");
         }
     }
-    
+
     // Función para filtrar productos por categoría
     function filterProductsByCategory(products, category) {
         return products.filter((product) => product.category === category);
@@ -151,22 +149,24 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para agregar productos al carrito
     function addToCart(productId, quantityElement) {
         const product = getProductById(productId);
-    
+
         if (product) {
             let cartItem = cartItems.find((item) => item.id === productId);
             if (!cartItem) {
                 cartItem = { ...product, quantity: 0 };
                 cartItems.push(cartItem);
             }
-            
+
             cartItem.quantity++;
-            
+
             if (quantityElement) {
                 quantityElement.textContent = cartItem.quantity;
             }
+            showCartAlert("Producto agregado al carrito");
             updateCart();
         }
     }
+
     // Función para obtener un producto por su ID
     function getProductById(id) {
         return productData.find((product) => product.id === id);
@@ -174,13 +174,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para actualizar el carrito
     function updateCart() {
-        cart.innerHTML = '';
+        cart.innerHTML = "";
         let total = 0;
 
         cartItems.forEach((item) => {
             total += item.price * item.quantity;
-            const cartItem = document.createElement('div');
-            cartItem.className = 'cart-item';
+            const cartItem = document.createElement("div");
+            cartItem.className = "cart-item";
 
             cartItem.innerHTML = `
                 <img src="${item.image}" alt="${item.name}">
@@ -195,15 +195,15 @@ document.addEventListener("DOMContentLoaded", function () {
         totalPrice.textContent = total.toFixed(2);
 
         // Agregar evento para eliminar productos del carrito
-        const removeButtons = document.querySelectorAll('.remove-from-cart');
+        const removeButtons = document.querySelectorAll(".remove-from-cart");
         removeButtons.forEach((button) => {
-            button.addEventListener('click', removeFromCart);
+            button.addEventListener("click", removeFromCart);
         });
     }
 
     // Función para eliminar productos del carrito
     function removeFromCart(event) {
-        const productId = parseInt(event.target.getAttribute('data-id'));
+        const productId = parseInt(event.target.getAttribute("data-id"));
         const itemIndex = cartItems.findIndex((item) => item.id === productId);
 
         if (itemIndex !== -1) {
@@ -214,24 +214,39 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             updateCart();
+            showCartAlert("Producto eliminado del carrito");
         }
     }
 
     // Botón para vaciar el carrito
-    clearCartButton.addEventListener('click', () => {
+    clearCartButton.addEventListener("click", () => {
         cartItems = [];
         updateCart();
+        showCartAlert("Carrito vaciado");
     });
 
     // Función para la compra
-    function checkout() {        
+    function checkout() {
+        const total = calculateTotal();
         Swal.fire({
             title: "¡Gracias por tu compra!",
-            text: "Tu pedido ha sido registrado.",
+            html: `Tu pedido ha sido registrado.<br>Total: $${total}`,
             icon: "success",
             confirmButtonText: "Aceptar"
         });
+        // Vaciar el carrito después de la compra
+        cartItems = [];
+        updateCart();
     }
 
-    
+    // Función para mostrar alerta de carrito con SweetAlert
+    function showCartAlert(message) {
+        Swal.fire({
+            title: "Carrito de Compras",
+            text: message,
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1000 // 1 segundo
+        });
+    }
 });
