@@ -146,13 +146,11 @@ button:hover {
 
 /* Estilo para las opciones de filtro */
 #category-filter {
-    width: 100%;
-    padding: 10px;
+    width: 223px; /* Ajusta el ancho según sea necesario */
+    padding: 8px;
+    font-size: 14px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #fff;
-    cursor: pointer;
+    border-radius: 4px;
 }
 
 #category-filter option {
