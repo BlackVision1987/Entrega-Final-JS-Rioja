@@ -3,14 +3,15 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda de Hardware de PC</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">    
+    <link rel="stylesheet" type="text/css" href="styles.css">        
 </head>
 <body>
     <header>
         <h1>Tienda de Hardware de PC Dr. Robot</h1>
-        <div id="cart-icon">
-            <img src="images/cart-icon.png" alt="Carrito">
-        </div>                   
+        <div id="cart-container" class="cart-container">
+            <button id="cart-icon" class="cart-icon">🛒</button>
+            <span id="cart-count" class="cart-count">0</span>
+        </div>                  
     </header>
     <select id="category-filter">
         <option value="all">Todas las Categorías</option>

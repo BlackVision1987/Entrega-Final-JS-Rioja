@@ -10,9 +10,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const categoryFilter = document.getElementById("category-filter");
     const searchInput = document.getElementById("search-input");
     const searchButton = document.getElementById("search-button");
-
+    const cartContainer = document.getElementById("cart-container");
+    const cartCount = document.getElementById("cart-count");
     const cartIcon = document.getElementById("cart-icon");
     cartIcon.addEventListener("click", showCartSummary);
+
+    function updateCartCount() {
+        const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+        cartCount.textContent = totalItems.toString();
+    }
 
     function showCartSummary() {
         if (cartItems.length === 0) {
@@ -162,8 +168,10 @@ document.addEventListener("DOMContentLoaded", function () {
             if (quantityElement) {
                 quantityElement.textContent = cartItem.quantity;
             }
+
             showCartAlert("Producto agregado al carrito");
             updateCart();
+            updateCartCount(); // Añade esta línea para actualizar el contador del carrito
         }
     }
 
@@ -199,6 +207,8 @@ document.addEventListener("DOMContentLoaded", function () {
         removeButtons.forEach((button) => {
             button.addEventListener("click", removeFromCart);
         });
+
+        updateCartCount(); // Añade esta línea para actualizar el contador del carrito
     }
 
     // Función para eliminar productos del carrito
@@ -237,6 +247,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Vaciar el carrito después de la compra
         cartItems = [];
         updateCart();
+        updateCartCount(); // Añade esta línea para actualizar el contador del carrito
     }
 
     // Función para mostrar alerta de carrito con SweetAlert
@@ -249,4 +260,11 @@ document.addEventListener("DOMContentLoaded", function () {
             timer: 1000 // 1 segundo
         });
     }
-});
+
+    // Función para actualizar el contador del carrito
+    function updateCartCount() {
+        const cartCount = document.getElementById("cart-count");
+        const totalCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+        cartCount.textContent = totalCount.toString();
+    }
+    });

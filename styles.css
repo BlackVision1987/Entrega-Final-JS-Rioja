@@ -187,3 +187,28 @@ button:hover {
 #clear-cart:hover {
     background-color: #ff5050;
 }
+/* Estilos para el botón flotante del carrito */
+.cart-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.cart-icon {
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.cart-count {
+    font-size: 14px;
+    margin-left: 5px;
+}
