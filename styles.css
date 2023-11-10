@@ -146,7 +146,7 @@ button:hover {
 
 /* Estilo para las opciones de filtro */
 #category-filter {
-    width: 223px; /* Ajusta el ancho según sea necesario */
+    width: 223px;
     padding: 8px;
     font-size: 14px;
     border: 1px solid #ccc;
