@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function showCartSummary() {
         if (cartItems.length === 0) {
-            showCartAlert("El carrito está vacío.");
+            showCartAlert("El carrito está vacío.", true);
         } else {
             let summary = "Carrito de Compras:<br>";
 
@@ -52,14 +52,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Agrega un evento para restablecer la lista de productos
     const resetButton = document.getElementById("reset-button");
     resetButton.addEventListener("click", () => {
-        searchInput.value = ""; // Limpia el campo de búsqueda
-        displayProducts(productData); // Muestra la lista completa de productos
+        searchInput.value = "";
+        displayProducts(productData);
     });
 
     searchButton.addEventListener("click", performSearch);
 
     function performSearch() {
-        const query = searchInput.value.toLowerCase(); // Obtén la consulta y conviértela a minúsculas
+        const query = searchInput.value.toLowerCase();
 
         // Filtra los productos que coinciden con la consulta
         const searchResults = productData.filter((product) => product.name.toLowerCase().includes(query));
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
             updateCart();
             showCartAlert("Cantidad incrementada");
         } else {
-            // Si el carrito está vacío, agrega automáticamente un artículo al carrito
+            
             addToCart(productId, quantityElement);
         }
     }
@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
         totalPrice.textContent = total.toFixed(2);
         updateCartCount();
-        addRemoveFromCartListeners(); // Agrega el evento para eliminar productos del carrito
+        addRemoveFromCartListeners();
     }
     
     function updateCartCount() {
@@ -254,14 +254,16 @@ document.addEventListener("DOMContentLoaded", function () {
             icon: "success",
             confirmButtonText: "Aceptar"
         });
-        // Vaciar el carrito después de la compra
+        
         cartItems = [];
         updateCart();
-        updateCartCount(); // Añade esta línea para actualizar el contador del carrito
+        updateCartCount();
     }
 
     // Función para mostrar alerta de carrito con SweetAlert
-    function showCartAlert(message, icon = "success") {
+    function showCartAlert(message, isEmpty = false) {
+        const icon = isEmpty ? "info" : "success";
+
         Swal.fire({
             title: "Carrito de Compras",
             text: message,
@@ -277,4 +279,4 @@ document.addEventListener("DOMContentLoaded", function () {
         const totalCount = cartItems.reduce((total, item) => total + item.quantity, 0);
         cartCount.textContent = totalCount.toString();
     }
-    });
+});
