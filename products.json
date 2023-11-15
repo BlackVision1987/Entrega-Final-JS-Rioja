@@ -1,24 +1,27 @@
 [
     {
         "id": 1,
-        "name": "Tarjeta Gráfica NVidia RTX 4080",
+        "name": "Tarjeta Gráfica MSI NVidia RTX 4080 Ventus",
         "price": 1200,
         "image": "images/graphics_nvidia_4080.jpg",
-        "category": "Gráfica NVidia"
+        "category": "Gráfica NVidia",
+        "specifications": "Especificaciones: 16GB GDDR6X, 256-bit, Core Boost 2535 MHz, Consumo 320W, PCIe 4.0, Dimensiones 322 x 136 x 63mm"
     },
     {
         "id": 2,
         "name": "Procesador Intel i7 12700K",
         "price": 500,
         "image": "images/processor_i7.jpg",
-        "category": "Procesadores Intel"
+        "category": "Procesadores Intel",
+        "specifications": "Especificaciones: Cantidad de núcleos 12, Hilos 20, Frecuencia turbo máxima 5.00 GHz, Cache 25 MB"
     },
     {
         "id": 3,
         "name": "Mother Gigabyte X570 Gaming X",
         "price": 300,
         "image": "images/mother_amd.jpg",
-        "category": "Mother AMD"
+        "category": "Mother AMD",
+        "specifications": "Especificaciones: Socket AM4, Chipset X570, X4 DDR4 DIMM, Doble NVMe PCIe 4.0 / 3.0 x4 M.2"
 
     },
     {
@@ -26,7 +29,8 @@
         "name": "Mother MSI MEG Z690 ACE",
         "price": 350,
         "image": "images/mother_intel.jpg",
-        "category": "Mother Intel"
+        "category": "Mother Intel",
+        "specifications": "Especificaciones: Socket LGA 1700, Chipset Z690, X4 DDR5 DIMM, 5 NVMe PCIe 4.0"
 
     },
     {
@@ -34,7 +38,8 @@
         "name": "Disco SSD NVMe M.2 Samsung 980 PRO 250GB PCIE 4.0",
         "price": 150,
         "image": "images/ssd_nvme.jpg",
-        "category": "Almacenamiento SSD"
+        "category": "Almacenamiento SSD",
+        "specifications": "Especificaciones: M.2(2280) Form Factor, PCIe 4.0, 6400 MB/s Seq. reads, 2700 MB/s Seq. writes"
 
     },
     {
@@ -42,7 +47,8 @@
         "name": "Disco Duro HDD 1Tb Seagate Barracuda Sata III",
         "price": 170,
         "image": "images/hd_sata.jpg",
-        "category": "Almacenamiento Rigido"
+        "category": "Almacenamiento Rigido",
+        "specifications": "Especificaciones: Interfaz Sata III 6 Gb/s, Capacidad 1TB, Cache 64MB, 7200 RPM"
 
     },
     {
@@ -50,15 +56,17 @@
         "name": "Procesador AMD Ryzen 7 5800X",
         "price": 400,
         "image": "images/processor_r7.jpg",
-        "category": "Procesadores AMD"
+        "category": "Procesadores AMD",
+        "specifications": "Especificaciones: Cantidad de núcleos 8, Hilos 16, Frecuencia turbo máxima 4.7 GHz, Caché 32MB"
 
     },
     {
         "id": 8,
-        "name": "Tarjeta Gráfica AMD Radeon RX 7800 XT",
+        "name": "Tarjeta Gráfica ASRock AMD Radeon RX 7800 XT Phantom Gaming",
         "price": 1000,
         "image": "images/grafica_amd_7800.jpg",
-        "category": "Gráfica AMD"
+        "category": "Gráfica AMD",
+        "specifications": "Especificaciones: 16GB GDDR6, 256-bit, Boost Clock 2565 MHz, Consumo 400W PCIe 4.0, Dimensiones 328 x 140 x 53mm"
 
     },
     {
@@ -66,7 +74,8 @@
         "name": "Fuente Seasonic Focus Gx-850w 80plus Gold",
         "price": 300,
         "image": "images/fuente_850w.jpg",
-        "category": "Fuentes"
+        "category": "Fuentes",
+        "specifications": "Especificaciones: Certificacion 80PLUS Gold, Dimensiones 140 mm (L) x 150 mm (W) x 86 mm (H), Full Modular, Protecciones OPP, OVP, UVP, OCP, OTP, SCP"
 
     },
     {
@@ -74,7 +83,8 @@
         "name": "Gabinete Corsair ICUE 7000X RGB TG FULL-Tower ATX White",
         "price": 200,
         "image": "images/gabinete_rgb.jpg",
-        "category": "Gabinetes"
+        "category": "Gabinetes",
+        "specifications": "Especificaciones: Maximum GPU Length 450 mm, Maximum CPU Cooler Height 190 mm, Maximum PSU Length 225 mm, Case Expansion Slots 8 vertical + 3 horizontal"
 
     },
     {
@@ -82,7 +92,8 @@
         "name": "Memoria Ram Ddr4 16gb 3200mhz (8GBx2) Corsair Vengeance Rgb Pro Black",
         "price": 150,
         "image": "images/ram_ddr4.jpg",
-        "category": "Memoria DDR4"
+        "category": "Memoria DDR4",
+        "specifications": "Especificaciones: Performance Profile XMP 2.0, Tested Latency 16-18-18-36, Tested Voltage 1.35V"
 
     },
     {
@@ -90,7 +101,8 @@
         "name": "Memoria RAM Ddr5 Corsair 16GB 5600MHz (8GBx2) Vengeance Rgb AMD EXPO",
         "price": 190,
         "image": "images/ram_ddr5.jpg",
-        "category": "Memoria DDR5"
+        "category": "Memoria DDR5",
+        "specifications": "Especificaciones: Performance Profile AMD EXPO, SPD Latency 40-40-40-77, Tested Voltage 1.25V"
 
     }
 ]

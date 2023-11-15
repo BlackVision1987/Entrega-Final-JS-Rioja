@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const productDiv = document.createElement("div");
             productDiv.className = "product-item";
             productDiv.innerHTML = `
-                <img src="${product.image}" alt="${product.name}">
-                <h3>${product.name}</h3>
+                <img src="${product.image}" alt="${product.name}" class="product-image" data-id="${product.id}">
+                <h3 class="product-title" data-id="${product.id}">${product.name}</h3>
                 <p>$${product.price.toFixed(2)}</p>
                 <button class="add-to-cart" data-id="${product.id}">Agregar al carrito</button>
                 <div class="quantity-controls">
@@ -103,8 +103,40 @@ document.addEventListener("DOMContentLoaded", function () {
             increaseQuantityButton.addEventListener("click", () => increaseQuantity(product.id, productQuantity));
             decreaseQuantityButton.addEventListener("click", () => decreaseQuantity(product.id, productQuantity));
 
+            const productImage = productDiv.querySelector(".product-image");
+            const productTitle = productDiv.querySelector(".product-title");
+
+            productImage.addEventListener("click", () => showProductDetails(product));
+            productTitle.addEventListener("click", () => showProductDetails(product));
+
             productContainer.appendChild(productDiv);
         });
+    }
+
+    let specificationsModal; // Declarar la variable fuera de la función para que sea accesible en todo el ámbito
+
+    function showProductDetails(product) {
+        // Cerrar el modal existente si hay alguno
+        if (specificationsModal) {
+            specificationsModal.style.display = "none";
+        }
+    
+        const specificationsText = document.createElement("div");
+        specificationsText.textContent = product.specifications;
+    
+        const closeButton = document.createElement("button");
+        closeButton.textContent = "Cerrar";
+        closeButton.addEventListener("click", () => {
+            specificationsModal.style.display = "none";
+        });
+    
+        specificationsModal = document.createElement("div");
+        specificationsModal.className = "specifications-modal";
+        specificationsModal.appendChild(specificationsText);
+        specificationsModal.appendChild(closeButton);
+    
+        document.body.appendChild(specificationsModal);
+        specificationsModal.style.display = "block";
     }
 
     // Función para aumentar la cantidad de un producto en el carrito
