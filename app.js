@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const productList = document.getElementById("product-list");
     const cart = document.getElementById("cart");
     const totalPrice = document.getElementById("total-price");
     const clearCartButton = document.getElementById("clear-cart");
@@ -10,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const categoryFilter = document.getElementById("category-filter");
     const searchInput = document.getElementById("search-input");
     const searchButton = document.getElementById("search-button");
-    const cartContainer = document.getElementById("cart-container");
     const cartCount = document.getElementById("cart-count");
     const cartIcon = document.getElementById("cart-icon");
     cartIcon.addEventListener("click", showCartSummary);
@@ -89,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <button class="add-to-cart" data-id="${product.id}">Agregar al carrito</button>
                 <div class="quantity-controls">
                     <button class="increase-quantity" data-id="${product.id}">+</button>
-                    <span class="product-quantity" data-id="${product.id}">1</span>
+                    <span class="product-quantity" data-id="${product.id}">0</span>
                     <button class="decrease-quantity" data-id="${product.id}">-</button>
                 </div>
             `;
