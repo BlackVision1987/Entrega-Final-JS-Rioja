@@ -289,11 +289,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    function resetProductQuantities() {
+        const productQuantities = document.querySelectorAll(".product-quantity");
+        productQuantities.forEach((quantityElement) => {
+            quantityElement.textContent = "0";
+        });
+    }
+
     // Botón para vaciar el carrito
     clearCartButton.addEventListener("click", () => {
         cartItems = [];
         updateCart();        
         showCartAlert("Carrito vaciado");
+        resetProductQuantities();
     });
 
     // Función para la compra
@@ -308,7 +316,8 @@ document.addEventListener("DOMContentLoaded", function () {
         
         cartItems = [];
         updateCart();
-        updateCartCount();        
+        updateCartCount();
+        resetProductQuantities();        
     }
 
     // Función para mostrar alerta de carrito con SweetAlert
