@@ -47,11 +47,17 @@ document.addEventListener("DOMContentLoaded", function () {
         return total.toFixed(2);
     }
 
+    // Función para restablecer el menú de categorías
+    function resetCategoryFilter() {
+        categoryFilter.value = "all";
+    }
+
     // Agrega un evento para restablecer la lista de productos
     const resetButton = document.getElementById("reset-button");
     resetButton.addEventListener("click", () => {
         searchInput.value = "";
         displayProducts(productData);
+        resetCategoryFilter();
     });
 
     searchButton.addEventListener("click", performSearch);
