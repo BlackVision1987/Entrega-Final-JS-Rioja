@@ -70,11 +70,19 @@ document.addEventListener("DOMContentLoaded", function () {
         displayProducts(filteredProducts);
     });
 
-    // Función para mostrar los productos en la página
+    function Product(id, name, price, image, category, specifications) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.image = image;
+        this.category = category;
+        this.specifications = specifications;
+    }
+
     function displayProducts(products) {
         const productContainer = document.getElementById("product-list");
         productContainer.innerHTML = "";
-
+    
         products.forEach((product) => {
             const productDiv = document.createElement("div");
             productDiv.className = "product-item";
@@ -89,22 +97,22 @@ document.addEventListener("DOMContentLoaded", function () {
                     <button class="decrease-quantity" data-id="${product.id}">-</button>
                 </div>
             `;
-
+    
             const addToCartButton = productDiv.querySelector(".add-to-cart");
             const increaseQuantityButton = productDiv.querySelector(".increase-quantity");
             const decreaseQuantityButton = productDiv.querySelector(".decrease-quantity");
             const productQuantity = productDiv.querySelector(".product-quantity");
-
+    
             addToCartButton.addEventListener("click", () => addToCart(product.id, productQuantity));
             increaseQuantityButton.addEventListener("click", () => increaseQuantity(product.id, productQuantity));
             decreaseQuantityButton.addEventListener("click", () => decreaseQuantity(product.id, productQuantity));
-
+    
             const productImage = productDiv.querySelector(".product-image");
             const productTitle = productDiv.querySelector(".product-title");
-
+    
             productImage.addEventListener("click", () => showProductDetails(product));
             productTitle.addEventListener("click", () => showProductDetails(product));
-
+    
             productContainer.appendChild(productDiv);
         });
     }
@@ -172,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("products.json")
         .then((response) => response.json())
         .then((data) => {
-            productData = data;
+            productData = data.map((product) => new Product(product.id, product.name, product.price, product.image, product.category, product.specifications));
             displayProducts(productData);
         })
         .catch((error) => {
