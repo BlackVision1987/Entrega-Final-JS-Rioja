@@ -58,11 +58,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function performSearch() {
         const query = searchInput.value.toLowerCase();
-
-        // Filtra los productos que coinciden con la consulta
+        
         const searchResults = productData.filter((product) => product.name.toLowerCase().includes(query));
-
-        // Muestra los resultados en la página
+        
         displayProducts(searchResults);
     }
 
@@ -111,10 +109,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    let specificationsModal; // Declarar la variable fuera de la función para que sea accesible en todo el ámbito
+    let specificationsModal;
 
-    function showProductDetails(product) {
-        // Cerrar el modal existente si hay alguno
+    function showProductDetails(product) {        
         if (specificationsModal) {
             specificationsModal.style.display = "none";
         }
@@ -299,7 +296,7 @@ document.addEventListener("DOMContentLoaded", function () {
             text: message,
             icon: icon,
             showConfirmButton: false,
-            timer: 1000 // 1 segundo
+            timer: 1000
         });
     }
 
