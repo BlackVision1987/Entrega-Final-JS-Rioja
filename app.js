@@ -168,6 +168,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             updateCart();
             showCartAlert("Cantidad disminuida");
+        } else if (cartItem && cartItem.quantity === 1) {            
+            removeFromCart(productId);
         }
     }
 
@@ -252,13 +254,15 @@ document.addEventListener("DOMContentLoaded", function () {
     function addRemoveFromCartListeners() {
         const removeButtons = document.querySelectorAll(".remove-from-cart");
         removeButtons.forEach((button) => {
-            button.addEventListener("click", removeFromCart);
+            button.addEventListener("click", (event) => {
+                const productId = parseInt(event.target.getAttribute("data-id"));
+                removeFromCart(productId);
+            });
         });
     }
 
     // Función para eliminar productos del carrito
-    function removeFromCart(event) {
-        const productId = parseInt(event.target.getAttribute("data-id"));
+    function removeFromCart(productId) {
         const itemIndex = cartItems.findIndex((item) => item.id === productId);
 
         if (itemIndex !== -1) {
@@ -269,14 +273,26 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             updateCart();
+            updateProductQuantity(productId);
             showCartAlert("Producto eliminado del carrito");
+        } else {            
+            console.error(`Producto con ID ${productId} no encontrado en el carrito.`);
+        }
+    }
+
+    // Función para actualizar la cantidad entre "+" y "-"
+    function updateProductQuantity(productId) {
+        const productQuantityElement = document.querySelector(`.product-quantity[data-id="${productId}"]`);
+        if (productQuantityElement) {
+            const cartItem = cartItems.find((item) => item.id === productId);
+            productQuantityElement.textContent = cartItem ? cartItem.quantity : '0';
         }
     }
 
     // Botón para vaciar el carrito
     clearCartButton.addEventListener("click", () => {
         cartItems = [];
-        updateCart();
+        updateCart();        
         showCartAlert("Carrito vaciado");
     });
 
@@ -292,7 +308,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         cartItems = [];
         updateCart();
-        updateCartCount();
+        updateCartCount();        
     }
 
     // Función para mostrar alerta de carrito con SweetAlert
